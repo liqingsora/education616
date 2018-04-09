@@ -1,23 +1,24 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+  <div>
+    <div class="header">
+      header
+    </div>
+    <div class="content">
+      content
+    </div>
+    <v-footer></v-footer>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'App'
-}
+<script type="text/ecmascript-6">
+  import footer from 'components/footer/footer.vue';
+  export default{
+    components: {
+      'v-footer': footer
+    }
+  };
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped lang="stylus" rel="stylesheet/stylus">
+  @import "common/stylus/mixin.styl"
 </style>
