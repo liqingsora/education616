@@ -2,19 +2,16 @@
   <div class="footer">
     <div class="tab border-1px">
       <div class="tab-item">
-        <router-link v-bind:to="'/goods'">
+        <router-link tag="div" to="/goods">
           <span class="goods"></span><span class="text">套餐</span>
         </router-link>
       </div>
       <div class="tab-item">
-        <router-link to="/my">
+        <router-link tag="div" to="/my">
           <span class="my"></span><span class="text">我的</span>
         </router-link>
       </div>
     </div>
-    <keep-alive>
-      <router-view></router-view>
-    </keep-alive>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -40,11 +37,11 @@
       .tab-item
         flex: 1
         text-align: center
-        & > a
+        & > div
           display: inline-block
           font-size: 14px
           color: rgb(52, 52, 52)
-          &.active
+          &.router-link-active
             color:rgb(128, 185, 251)
             .goods
               bg-image('goods1')
@@ -56,7 +53,7 @@
           width: 30px
           height: 20px
           bg-image('goods0')
-          background-size: 30px 28px
+          background-size: 30px 24px
           background-repeat: no-repeat
         .my
           display: block

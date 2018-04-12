@@ -1,20 +1,18 @@
 <template>
-  <div>
-    <div class="header">
-      header
-    </div>
-    <div class="content">
-      content
-    </div>
-    <v-footer></v-footer>
+  <div id="app">
+    <m-footer></m-footer>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import footer from 'components/footer/footer.vue';
+  import MFooter from 'components/m-footer/m-footer';
+
   export default{
     components: {
-      'v-footer': footer
+      MFooter
     }
   };
 </script>

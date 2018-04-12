@@ -1,22 +1,16 @@
+import 'babel-polyfill';
 import Vue from 'vue';
 import App from './App';
-import VueRouter from 'vue-router';
-import goods from 'components/goods/goods';
-import my from 'components/my/my';
+import router from './router';
+import fastclick from 'fastclick';
 
-Vue.use(VueRouter);
+import 'common/stylus/index.styl';
 
-Vue.config.productionTip = false;
-let routes = [
-  {path: '/', name: 'index', component: App, children: [{path: '/goods', component: goods}, {path: '/my', component: my}]}
-];
-let router = new VueRouter({
-  'linkActiveClass': 'active',
-   routes // （缩写）相当于 routes: routes
-});
+fastclick.attach(document.body);// 防止手机端300毫秒延迟
+
 /* eslint-disable no-new */
 new Vue({
   el: 'body',
   router,
-  render: h => h('router-view')
+  render: h => h(App)
 });
