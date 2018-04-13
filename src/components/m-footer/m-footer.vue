@@ -32,8 +32,9 @@
       height: 49px
       align-items: center
       justify-content: center
+      background: #fff
       //1px像素
-      border-1px(rgba(7, 17, 27, 0.1))
+      border-1px(rgb(238,238,238),0,30px,0,30px,100%)
       .tab-item
         flex: 1
         text-align: center
