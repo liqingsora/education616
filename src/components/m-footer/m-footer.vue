@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
-    <div class="tab border-1px">
-      <div class="tab-item">
+    <div class="tab borderfoot-1px">
+      <div class="tab-item borderfoot-right">
         <router-link tag="div" to="/goods">
           <span class="goods"></span><span class="text">套餐</span>
         </router-link>
@@ -34,7 +34,9 @@
       justify-content: center
       background: #fff
       //1px像素
-      border-1px(rgb(238,238,238),0,30px,0,30px,100%)
+      borderfoot-1px(rgb(238,238,238))
+      .borderfoot-right
+        border-right: 1px solid rgb(238,238,238)
       .tab-item
         flex: 1
         text-align: center
