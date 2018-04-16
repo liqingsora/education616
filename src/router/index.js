@@ -9,6 +9,12 @@ const Goods = (resolve) => {
   });
 };
 
+const Register = (resolve) => {
+  import('components/register/register').then((module) => {
+    resolve(module);
+  });
+};
+
 const My = (resolve) => {
   import('components/my/my').then((module) => {
     resolve(module);
@@ -62,6 +68,10 @@ export default new Router({
     {
       path: '/',
       redirect: '/goods'
+    },
+    {
+      path: '/register',
+      component: Register
     },
     {
       path: '/goods',

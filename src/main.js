@@ -11,6 +11,6 @@ fastclick.attach(document.body);// 防止手机端300毫秒延迟
 /* eslint-disable no-new */
 new Vue({
   el: 'body',
-  router,
+  router: router,
   render: h => h(App)
 });

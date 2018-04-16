@@ -5,63 +5,12 @@
       <span class="list-title">套餐列表</span>
     </div>
     <ul class="itemwarp">
-      <li class="itembg">
+      <li class="itembg" v-for="item in goods" :key="item.ID" @click="toPurchased()">
         <div class="text">
-          <h2 class="goods-name">精选套餐</h2>
-          <p class="goods-price">￥90.00</p>
+          <h2 class="goods-name">{{item.NAME}}</h2>
+          <p class="goods-price">￥{{item.PRICE}}</p>
           <ul class="goods-content">
-            <li>简历指导5次</li>
-            <li>简历指导5次</li>
-            <li>简历指导5次</li>
-            <li>简历指导5次</li>
-          </ul>
-        </div>
-      </li>
-      <li class="itembg">
-        <div class="text">
-          <h2 class="goods-name">精选套餐</h2>
-          <p class="goods-price">￥90.00</p>
-          <ul class="goods-content">
-            <li>简历指导5次</li>
-            <li>简历指导5次</li>
-            <li>简历指导5次</li>
-            <li>简历指导5次</li>
-          </ul>
-        </div>
-      </li>
-      <li class="itembg">
-        <div class="text">
-          <h2 class="goods-name">精选套餐</h2>
-          <p class="goods-price">￥90.00</p>
-          <ul class="goods-content">
-            <li>简历指导5次</li>
-            <li>简历指导5次</li>
-            <li>简历指导5次</li>
-            <li>简历指导5次</li>
-          </ul>
-        </div>
-      </li>
-      <li class="itembg">
-        <div class="text">
-          <h2 class="goods-name">精选套餐</h2>
-          <p class="goods-price">￥90.00</p>
-          <ul class="goods-content">
-            <li>简历指导5次</li>
-            <li>简历指导5次</li>
-            <li>简历指导5次</li>
-            <li>简历指导5次</li>
-          </ul>
-        </div>
-      </li>
-      <li class="itembg">
-        <div class="text">
-          <h2 class="goods-name">精选套餐</h2>
-          <p class="goods-price">￥90.00</p>
-          <ul class="goods-content">
-            <li>简历指导5次</li>
-            <li>简历指导5次</li>
-            <li>简历指导5次</li>
-            <li>简历指导5次</li>
+            <li v-for="item2 in item.allService" :key="item2.SERVICE_ID">{{item2.SERVICE_NAME}}{{item2.COUNT}}次</li>
           </ul>
         </div>
       </li>
@@ -71,7 +20,29 @@
 
 <script type="text/ecmascript-6">
   import Scroll from 'base/scroll/scroll';
+  import * as meal from 'api/test';
   export default {
+    data() {
+      return {
+        goods: []
+      };
+    },
+    created() {
+      meal.mealList().then((res) => {
+        console.log(res.data);
+        this.goods = res.data.DATA;
+        this.goods.forEach(function(val) {
+          val.allService.sort(function(va, vb) {
+            return va.SERVICE_NAME > vb.SERVICE_NAME;
+          });
+        });
+      });
+    },
+    methods: {
+      toPurchased() {
+        this.$router.push('/my-purchased');
+      }
+    },
     components: {
       Scroll
     }
