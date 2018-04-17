@@ -13,7 +13,7 @@
           </div>
           <div class="yuyue-title">预约服务时间 ：
             <span class="server-time">2018-03-27 19:00</span>
-            <button @click="toggle()">111</button>
+            <a type="button" @click="toggle()"><span class="toggle-btn"></span></a>
           </div>
         </div>
         <div class="showtext" v-show="isShow">
@@ -56,7 +56,7 @@
       .list-title
         vertical-align: middle
         margin-left: 10px
-        font-size: 16px
+        font-size: 17px
         color: rgb(50,50,50)
     .itemwarp
       padding: 0 15px 25px 15px
@@ -76,8 +76,7 @@
             display: inline-block
             float: left
             padding: 15px
-            font-size: 13px
-            font-weight: bold
+            font-size: 15px
             color: rgb(51,51,51)
             border-1px(rgb(238,238,238),0,15px,0,15px,82%)
             .server-name
@@ -85,10 +84,19 @@
             .yuyue-time
               float: right
               color: rgb(153,153,153)
-              font-size: 12px
+              font-size: 14px
               vertical-align: middle
             .server-time
               color: rgb(77,167,250)
+            .toggle-btn
+              display: inline-block
+              float: right
+              width: 14px
+              height: 14px
+              bg-image('open')
+              background-size: cover
+              background-repeat: no-repeat
+              extend-click()
         .showtext
           position: relative
           display: flex
@@ -101,19 +109,17 @@
             display: inline-block
             float: left
             padding: 15px
-            font-size: 13px
-            font-weight: bold
+            font-size: 15px
             color: rgb(51,51,51)
             border-1px(rgb(238,238,238),0,15px,0,15px,82%)
             & span
-              color: rgb(15,130,244)
+              color: #666
           .message-title
             display: inline-block
             float: left
             padding: 15px
-            font-size: 13px
-            font-weight: bold
+            font-size: 14px
             color: rgb(51,51,51)
             & span
-              color: rgb(51,51,51)
+              color: #666
 </style>

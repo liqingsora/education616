@@ -27,13 +27,13 @@
       .title
         display: inline-block
         margin: 20px auto
-        font-size: 18px
+        font-size: 22px
         color: rgb(51,51,51)
       .content
-        margin: 26px 15px
+        margin: 22px 15px
         text-indent: 2em
-        font-size: 11px
-        line-height: 20px
+        font-size: 14px
+        line-height: 24px
         text-align: left
-        color: rgb(51,51,51)
+        color: #666
 </style>

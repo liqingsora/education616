@@ -45,7 +45,7 @@
         border-1px(rgb(238,238,238),0,20px,0,20px,75%)
         .listdiv
           display: block
-          padding: 20px
+          padding: 24px
           .text
             font-size: 15px
             color: rgb(51,51,51)
@@ -61,7 +61,8 @@
             font-size: 14px
             color: rgb(12,127,243)
             & textarea
-              margin-top: 20px
+              -webkit-appearance: none;
+              margin-top: 24px
               width: calc(100% - 30px)
               min-height: 90px
               padding: 20px 15px
@@ -73,7 +74,7 @@
           .server-save-button
             display: block
             text-align: center
-            padding: 20px
-            font-size: 16px
+            padding: 24px 24px 100px 24px
+            font-size: 18px
             color: rgb(15,127,246)
 </style>

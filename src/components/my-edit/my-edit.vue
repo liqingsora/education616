@@ -62,7 +62,7 @@
         border-1px(rgb(238,238,238),0,20px,0,20px,75%)
         .listdiv
           display: block
-          padding: 20px
+          padding: 24px
           & input
             color: rgb(15,127,246)
             font-size: 15px
@@ -81,7 +81,7 @@
         .save-btn
             display: block
             text-align: center
-            padding: 20px
-            font-size: 16px
+            padding: 24px
+            font-size: 18px
             color: rgb(15,127,246)
 </style>

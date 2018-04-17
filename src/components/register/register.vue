@@ -2,7 +2,7 @@
   <div class="register">
     <div class="title">
       <span class="brand"></span>
-      <span class="desc">欢迎注册直击校园</span>
+      <span class="desc">欢迎注册职击校园</span>
     </div>
     <div class="register-form">
       <div class="register-phone">
@@ -11,7 +11,7 @@
       </div>
       <div class="register-vcode">
         <input type="num" name="" placeholder="请输入您收到的验证码">
-        <a type="button" class="vcode">获取验证码</a>
+        <button class="vcode">获取验证码</button>
       </div>
       <a class="register-button">点击注册</a>
     </div>
@@ -26,7 +26,7 @@
   @import "../../common/stylus/mixin.styl"
   .register
     .title
-      margin: 84px 0 40px 0
+      margin: 60px 0 40px 0
       text-align: center
       .brand
         display: block
@@ -64,19 +64,26 @@
         width: 100%
         padding: 20px 0
         font-size: 16px
+        line-height: 16px
         border-radius: 0
         border-bottom:1px solid rgb(238,238,238)
         .vcode
+          display: inline-block
           float: right
+          border: none
+          padding: 0
+          font-size: 16px
+          line-height: 16px
+          vertical-align: middle
           color: rgb(67,67,67)
       .register-button
         display: block
-        border-radius: 20px
+        border-radius: 10px
         width: 100%
         margin-top: 30px
         padding: 14px 0
         text-align: center
-        font-weight: bold
+        font-size: 18px
         color: rgb(3,110,219)
         border: 1px solid rgb(3,110,219)
 </style>

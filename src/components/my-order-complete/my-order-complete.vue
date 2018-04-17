@@ -7,7 +7,7 @@
     <ul class="itemwarp">
       <li class="item-boxshadow">
         <div class="text">
-          <div class="server-title border-1px">精选套餐 ：<span class="server-name">简历指导</span><span class="yuyue-time">2018-03-27</span></div>
+          <div class="server-title border-1px">服务内容 ：<span class="server-name">简历指导</span><span class="yuyue-time">2018-03-27</span></div>
           <div class="server-title border-1px">服务辅导老师 ：<span class="server-teacher">张老师</span></div>
           <div class="server-title border-1px">服务完成时间 ：<span class="server-time">2018-03-27 19:00</span></div>
         </div>
@@ -36,7 +36,7 @@
       .list-title
         vertical-align: middle
         margin-left: 10px
-        font-size: 16px
+        font-size: 17px
         color: rgb(50,50,50)
     .itemwarp
       padding: 0 15px 25px 15px
@@ -56,8 +56,7 @@
             display: inline-block
             float: left
             padding: 15px
-            font-size: 13px
-            font-weight: bold
+            font-size: 15px
             color: rgb(51,51,51)
             border-1px(rgb(238,238,238),0,15px,0,15px,82%)
             .server-name
@@ -65,10 +64,10 @@
             .yuyue-time
               float: right
               color: rgb(153,153,153)
-              font-size: 12px
+              font-size: 14px
               vertical-align: middle
             .server-teacher
-              color: rgb(136,190,250)
+              color: rgb(77,167,250)
             .server-time
               color: rgb(77,167,250)
 

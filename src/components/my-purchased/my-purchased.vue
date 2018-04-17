@@ -44,7 +44,7 @@
       .list-title
         vertical-align: middle
         margin-left: 10px
-        font-size: 16px
+        font-size: 17px
         color: rgb(50,50,50)
     .itemwarp
       padding: 0 30px 25px 30px
@@ -70,7 +70,7 @@
             width: 90%
             display: inline-block
             vertical-align: baseline
-            padding: 13px 15px 10px 15px
+            padding: 13px 15px
             font-size: 15px
             font-weight: bold
             color: rgb(50,50,50)
@@ -82,15 +82,15 @@
               color: rgb(200,200,200)
             border-1px(rgb(238,238,238),0,15px,0,15px,80%)
           .mygoods-num
-            padding: 12px 15px 12px 15px
+            padding: 13px 15px
             font-size: 14px
             color: rgb(52,52,52)
             & span
               color: rgb(17,110,245)
             border-1px(rgb(238,238,238),0,15px,0,15px,80%)
           .mygoods-content
-            display:inline-block
-            padding: 10px 15px
+            padding: 11.8px 15px
+            height: 48px
             color: rgb(101,101,101)
             & p
               width: 50%
@@ -108,7 +108,7 @@
             writing-mode: tb-lr
             writing-mode: vertical-lr
             font-size:14px
-            padding: 0 4px
+            padding-left: 5px
             color: rgb(101,101,101)
             &.router-link-active
               color: rgb(7,128,254)

@@ -8,9 +8,9 @@
       <li class="item-boxshadow">
         <div class="text">
           <span class="server-name">精选套餐</span>
-          <span class="server-frequency">￥90.00</span>
+          <span class="server-frequency">2次</span>
           <router-link tag="div" to="/my-order-edit">
-            <span class="server-button">预约</span>
+            <span class="server-button">预约<span class="gobtn"></span></span>
           </router-link>
         </div>
       </li>
@@ -38,7 +38,7 @@
       .list-title
         vertical-align: middle
         margin-left: 10px
-        font-size: 16px
+        font-size: 17px
         color: rgb(50,50,50)
     .itemwarp
       padding: 0 15px 25px 15px
@@ -51,27 +51,33 @@
           flex-direction: column
           justify-content: center
           flex: 1
-          line-height: 20px
+          line-height: 16px
           overflow: hidden
           .server-name
             display: inline-block
             float: left
-            padding: 30px 0 30px 30px
-            font-size: 13px
-            font-weight: bold
+            padding: 28px 0 28px 30px
+            font-size: 15px
             color: rgb(51,51,51)
           .server-frequency
             display: inline-block
             float: left
-            padding: 30px 0 30px 71px
-            font-size: 13px
-            font-weight: bold
+            padding: 28px 0 28px 70px
+            font-size: 15px
             color: rgb(0,57,167)
           .server-button
             display: inline-block
             float: left
-            margin: 30px 0 30px 85px
-            font-size: 13px
-            font-weight: bold
+            margin: 28px 0 28px 70px
+            font-size: 15px
             color: rgb(12,129,238)
+            .gobtn
+              display: inline-block
+              vertical-align: baseline
+              margin-left: 8px
+              width: 9px
+              height: 9px
+              bg-image('yuyueing')
+              background-size: 9px 9px
+              background-repeat: no-repeat
 </style>

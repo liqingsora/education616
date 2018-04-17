@@ -41,9 +41,11 @@
         flex: 1
         text-align: center
         & > div
+          width: 100%
           display: inline-block
           font-size: 14px
           color: rgb(52, 52, 52)
+          extend-click()
           &.router-link-active
             color:rgb(128, 185, 251)
             .goods
@@ -68,4 +70,6 @@
           background-repeat: no-repeat
         .text
           display: block
+          font-size: 12px
+          padding: 4px 0 0 0
 </style>

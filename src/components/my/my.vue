@@ -72,8 +72,8 @@
         padding-top: 25px
         margin: 0 auto
       .my-name
-        margin: 12px 0 19px 0
-        font-size: 15px
+        margin: 10px 0 18px 0
+        font-size: 20px
         color: #fff
     .my-list-wrap
       margin: 0 15px 70px 15px
@@ -100,10 +100,10 @@
         border-1px(rgb(238,238,238),0,30px,0,30px,65.2%)
         .listdiv
           display: block
-          padding: 26px 30px
+          padding: 24px 30px
           color: rgb(51,51,51)
           .iconfont
-            font-size: 22px
+            font-size: 26px
             vertical-align:middle
           .text
             font-size: 16px
