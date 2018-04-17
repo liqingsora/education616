@@ -2,10 +2,10 @@
   <div class="product-list">
     <div class="title">
       <span class="product-brand"></span>
-      <span class="list-title">套餐列表</span>
+      <span class="list-title" @click="toPurchased()">套餐列表</span>
     </div>
     <ul class="itemwarp">
-      <li class="itembg" v-for="item in goods" :key="item.ID" @click="toPurchased()">
+      <li class="itembg" v-for="item in goods" :key="item.ID" @click="toPurchased">
         <div class="text">
           <h2 class="goods-name">{{item.NAME}}</h2>
           <p class="goods-price">￥{{item.PRICE}}</p>
@@ -40,7 +40,11 @@
     },
     methods: {
       toPurchased() {
-        this.$router.push('/my-purchased');
+        // console.log(this.$MINT);
+        // this.$router.push('/my-purchased');
+        // MessageBox.alert('????','title');
+        // console.log(this.$messagebox);
+        this.$messagebox.alert('????','tishi');
       }
     },
     components: {
@@ -56,16 +60,16 @@
       margin: 20px 0 20px 15px
       .product-brand
         display: inline-block
-        vertical-align: top
+        vertical-align: middle
         width: 60px
         height: 17px
         bg-image('pbrand')
         background-size: 60px 17px
         background-repeat: no-repeat
       .list-title
-        vertical-align: top
+        vertical-align: middle
         margin-left: 10px
-        font-size: 14px
+        font-size: 16px
         color: rgb(50,50,50)
     .itemwarp
       padding: 0 25px 25px 25px

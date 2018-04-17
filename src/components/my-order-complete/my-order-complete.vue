@@ -27,16 +27,16 @@
       margin: 20px 0 20px 15px
       .product-brand
         display: inline-block
-        vertical-align: top
+        vertical-align: middle
         width: 60px
         height: 17px
         bg-image('pbrand')
         background-size: 60px 17px
         background-repeat: no-repeat
       .list-title
-        vertical-align: top
+        vertical-align: middle
         margin-left: 10px
-        font-size: 14px
+        font-size: 16px
         color: rgb(50,50,50)
     .itemwarp
       padding: 0 15px 25px 15px
