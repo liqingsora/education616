@@ -5,7 +5,6 @@ import router from './router';
 import fastclick from 'fastclick';
 
 import 'common/stylus/index.styl';
-
 import Mint from 'mint-ui';
 import 'mint-ui/lib/style.css';
 

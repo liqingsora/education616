@@ -87,7 +87,8 @@ export default new Router({
     },
     {
       path: '/my-purchased',
-      component: MyPurchased
+      component: MyPurchased,
+
     },
     {
       path: '/my-frequency',

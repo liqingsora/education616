@@ -5,19 +5,16 @@
       <span class="list-title">套餐列表</span>
     </div>
     <ul class="itemwarp">
-      <li class="itembg">
+      <li class="itembg" v-for="(item,index) in orders" :key="index">
         <div class="text-left">
-          <p class="mygoods-name border-1px">精选套餐<span>2018-03-27 19:00:00</span></p>
-          <p class="mygoods-num border-1px">订单号：<span>7878787878</span></p>
+          <p class="mygoods-name border-1px">{{item.SET_NAME}}<span>{{item.CREATE_DATE|DateValue}}</span></p>
+          <p class="mygoods-num border-1px">订单号：<span>{{item.ORDER_NUM}}</span></p>
           <div class="mygoods-content">
-            <p>简历指导 ：<span>5次</span></p>
-            <p>简历指导 ：<span>5次</span></p>
-            <p>简历指导 ：<span>5次</span></p>
-            <p>简历指导 ：<span>5次</span></p>
+            <p v-for="(item2, index) in item.allService" :key="index">{{item2.SERVICE_NAME}} ：<span>{{item2.COUNT}}次</span></p>
           </div>
         </div>
         <div class="text-right">
-          <span class="mygoods-state">已确认</span>
+          <span class="mygoods-state">{{item.ORDER_STATUS_CN}}</span>
         </div>
       </li>
     </ul>
@@ -25,7 +22,63 @@
 </template>
 
 <script type="text/ecmascript-6">
-  export default {};
+  import * as order from 'api/order';
+  import * as dateUtils from 'utils/date';
+  import * as store from 'utils/store'
+
+
+  export default {
+    data() {
+      return {
+        orders: []
+      };
+    },
+    created() {
+      var _self = this
+      order.orderList().then((res) => {
+        console.log(res.data);
+        var datas = res.data.DATA
+        datas.forEach(function (e) {
+          var goodstr = store.getStore('goods')
+          if(goodstr) {
+            var goods = JSON.parse(goodstr)
+            goods.forEach(function (good) {
+              if(good.ID == e.SET_ID) {
+                console.log(good.allService)
+                e.allService = good.allService
+              }
+            })
+          }
+//          _self.getOrderDetail(e.SET_ID, function (service) {
+//            e.allService = service
+//            _self.orders=datas
+//          })
+        })
+        _self.orders = datas
+      }).catch(err=>{
+        console.log(err)
+      });
+    },
+
+    methods: {
+      getOrderDetail(id, callback) {
+        order.mealList().then(res=>{
+          var data = res.data.DATA
+          data.forEach(function (e) {
+            if(e.ID == id) {
+              callback(e.allService)
+            }
+          })
+        })
+      }
+    },
+    filters: {
+      DateValue(time) {
+        var date = new Date(time);
+        return dateUtils.formatDate(date, "yyyy-MM-dd hh:mm");
+      }
+    }
+  };
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
