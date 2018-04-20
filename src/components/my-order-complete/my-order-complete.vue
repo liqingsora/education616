@@ -5,11 +5,11 @@
       <span class="list-title">我的服务记录</span>
     </div>
     <ul class="itemwarp">
-      <li class="item-boxshadow">
+      <li class="item-boxshadow" v-for="(item,index) in serviceList">
         <div class="text">
-          <div class="server-title border-1px">服务内容 ：<span class="server-name">简历指导</span><span class="yuyue-time">2018-03-27</span></div>
-          <div class="server-title border-1px">服务辅导老师 ：<span class="server-teacher">张老师</span></div>
-          <div class="server-title border-1px">服务完成时间 ：<span class="server-time">2018-03-27 19:00</span></div>
+          <div class="server-title border-1px">服务内容 ：<span class="server-name">{{item.SERVICE_NAME}}</span><span class="yuyue-time"></span></div>
+          <div class="server-title border-1px">服务辅导老师 ：<span class="server-teacher">{{item.SERVICE_TEACHER}}</span></div>
+          <div class="server-title border-1px">服务完成时间 ：<span class="server-time">{{item.CREATE_DATE | DateValue}}</span></div>
         </div>
       </li>
     </ul>
@@ -17,12 +17,46 @@
 </template>
 
 <script type="text/ecmascript-6">
-  export default {};
+  import * as meal from 'api/order';
+
+  export default {
+
+    data() {
+      return {
+        serviceList: []
+      };
+    },
+    created() {
+      this._bindData()
+    },
+    activated(){
+      this.$parent.hasFooter=false
+      document.body.scrollTop = 0
+      this._bindData()
+
+    },
+    methods: {
+      _bindData() {
+        var _self = this
+        this.$indicator.open('加载中...')
+        meal.getServiceLog().then((res) => {
+          _self.$indicator.close()
+          this.serviceList = res.data.DATA;
+          console.log(this.serviceList)
+        })
+          .catch(err=>{
+            _self.$networkerr(err, _self)
+
+          });
+      }
+    }
+  };
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
   @import "../../common/stylus/mixin.styl"
   .my-order-complete
+    margin-bottom: 20px
     .title
       margin: 20px 0 20px 15px
       .product-brand
@@ -41,6 +75,7 @@
     .itemwarp
       padding: 0 15px 25px 15px
       .item-boxshadow
+        margin-bottom: 25px
         background: #fff
         border-radius: 10px
         box-shadow: 0 0 8px rgba(94,170,248,0.4)

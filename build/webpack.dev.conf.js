@@ -57,10 +57,10 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       template: 'index.html',
       inject: true
     }),
-    // copy custom static assets
+    // copy custom af-mel-jqyr-portal assets
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, '../static'),
+        from: path.resolve(__dirname, '../af-mel-jqyr-portal'),
         to: config.dev.assetsSubDirectory,
         ignore: ['.*']
       }

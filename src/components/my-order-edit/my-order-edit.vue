@@ -3,33 +3,92 @@
     <div class="my-list-wrap">
       <div class="my-list border-1px">
         <div class="listdiv">
-          <span class="text">预约项目</span><span class="server-name">职业规划</span>
+          <span class="text">预约项目</span><span class="server-name">{{item}}</span>
         </div>
       </div>
       <div class="my-list border-1px">
         <div class="listdiv">
-          <span class="text">预约时间</span><span class="server-time">2018-03-29 14:00</span>
+          <span class="text" @click="openPicker">预约时间</span>
+          <span class="server-time" @click="openPicker">
+            {{Number(time) | DateValue}}
+
+          </span>
         </div>
       </div>
       <div class="my-list border-1px">
         <div class="listdiv">
           <span class="text">留言消息</span>
           <div class="server-content">
-            <textarea placeholder="请点击输入您的留言"></textarea>
+            <textarea v-model="remark" placeholder="请点击输入您的留言"></textarea>
           </div>
         </div>
       </div>
       <div class="my-list">
         <div class="btn">
-          <a href="" type="button" class="server-save-button">预约提交</a>
+          <a @click="saveAppointment" type="button" class="server-save-button">预约提交</a>
         </div>
       </div>
     </div>
+    <mt-datetime-picker
+      ref="picker"
+      type="datetime"
+      month-format="{value} 月"
+      date-format="{value} 日"
+      v-model="time"
+      >
+    </mt-datetime-picker>
   </div>
+
 </template>
 
 <script type="text/ecmascript-6">
-  export default {};
+  import * as meal from 'api/order';
+
+  export default {
+    data() {
+      return {
+        id: this.$route.query.id,
+        item: this.$route.query.name,
+        time: new Date(),
+        remark:''
+      };
+    },
+    activated(){
+      this.$parent.hasFooter=false
+      this._bindData()
+      document.body.scrollTop = 0;
+    },
+    methods: {
+      _bindData() {
+        this.id= this.$route.query.id
+        this.item= this.$route.query.name
+        this.time= new Date()
+      },
+      openPicker() {
+        this.$refs.picker.open();
+      },
+      saveAppointment() {
+        meal.saveAppointment({
+          SERVICE_ID:this.id,
+          SERVICE_NAME:this.item,
+          APPOINT_DATE:Number(this.time),
+          REMARK:this.remark
+        })
+          .then(res=>{
+            if(res.data.RETURN_CODE == '00') {
+              this.$toast({
+                message: '提交成功.'
+              });
+              this.$router.push('my-order-list')
+
+            }
+          })
+      }
+    },
+    filters: {
+
+    }
+  };
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">

@@ -71,44 +71,54 @@ export default new Router({
     },
     {
       path: '/register',
-      component: Register
+      component: Register,
+      meta: { index: 1 }
     },
     {
       path: '/goods',
-      component: Goods
+      component: Goods,
+      meta: {index: 1}
     },
     {
       path: '/my',
-      component: My
+      component: My,
+      meta: {index: 1}
     },
     {
       path: '/my-edit',
-      component: MyEdit
+      component: MyEdit,
+      meta: {index: 2}
     },
     {
       path: '/my-purchased',
       component: MyPurchased,
+      meta: {index:2}
 
     },
     {
       path: '/my-frequency',
-      component: MyFrequency
+      component: MyFrequency,
+      meta: {index:2}
     },
     {
       path: '/my-order-list',
-      component: MyOrderList
+      component: MyOrderList,
+      meta: {index:4}
     },
     {
       path: '/my-order-complete',
-      component: MyOrderComplete
+      component: MyOrderComplete,
+      meta: {index:2}
     },
     {
       path: '/my-aboutus',
-      component: MyAboutus
+      component: MyAboutus,
+      meta: {index:2}
     },
     {
       path: '/my-order-edit',
-      component: MyOrderEdit
+      component: MyOrderEdit,
+      meta: {index:3}
     }
   ]
 });

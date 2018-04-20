@@ -10,7 +10,14 @@
 </template>
 
 <script type="text/ecmascript-6">
-  export default {};
+  export default {
+    activated(){
+      this.$parent.hasFooter=false
+//      console.log(this.$parent.hasFooter)
+      document.body.scrollTop = 0;
+
+    }
+  };
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">

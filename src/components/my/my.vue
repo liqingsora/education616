@@ -2,9 +2,9 @@
   <div class="my">
     <div class="my-data-wrap">
       <div class="my-photo">
-        <img width="60" height="60" src="./myphoto@3x.png">
+        <img width="60" height="60" :src="photo" class="imgphoto">
       </div>
-      <p class="my-name">ppap</p>
+      <p class="my-name">{{name}}</p>
     </div>
     <div class="my-list-wrap">
       <div class="my-edit-wrap">
@@ -54,7 +54,25 @@
 </template>
 
 <script type="text/ecmascript-6">
-  export default {};
+  import * as store from 'utils/store'
+
+  export default {
+    data(){
+      return {
+        photo: '',
+        name:''
+      }
+    },
+    activated(){
+      try {
+        this.$indicator.close()
+      } catch(e) {}
+      this.photo = store.getStore('HEADIMGURL')
+      this.name = store.getStore('USER_NAME')
+      this.$parent.hasFooter=true
+      document.body.scrollTop = 0;
+    }
+  };
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
@@ -71,6 +89,8 @@
         height: 60px
         padding-top: 25px
         margin: 0 auto
+        & img
+          border-radius:50%
       .my-name
         margin: 10px 0 18px 0
         font-size: 20px

@@ -5,20 +5,20 @@
       <span class="list-title">我的预约项目</span>
     </div>
     <ul class="itemwarp">
-      <li class="item-boxshadow">
+      <li class="item-boxshadow" v-for="(item,index) in orderList">
         <div class="text">
           <div class="yuyue-title border-1px">预约内容 ：
-            <span class="server-name">简历指导</span>
-            <span class="yuyue-time">2018-03-27</span>
+            <span class="server-name">{{item.SERVICE_NAME}}</span>
+            <span class="yuyue-time">{{item.RECORD_TIME | DateValue}}</span>
           </div>
           <div class="yuyue-title">预约服务时间 ：
-            <span class="server-time">2018-03-27 19:00</span>
-            <a type="button" @click="toggle()"><span class="toggle-btn"></span></a>
+            <span class="server-time">{{item.APPOINT_DATE | DateValue}}</span>
+            <a type="button" @click="toggle(item)"><span :class="item.isRotate?'toggle-btn-down':'toggle-btn'"></span></a>
           </div>
         </div>
-        <div class="showtext" v-show="isShow">
-          <div class="reply-title border-1px">教师回复 ：<span>预约成功预约成功预约成功预约成功预约成功预约成功预约成功</span></div>
-          <div class="message-title">留言信息 ：<span>备注内容说一堆备注内容说一堆备注内容说一堆备注内容说一堆备注内容说一堆</span></div>
+        <div class="showtext" v-show="item.isShow">
+          <div class="reply-title border-1px">教师回复 ：<span>{{item.RESPONSE}}</span></div>
+          <div class="message-title">留言信息 ：<span>{{item.REMARK}}</span></div>
         </div>
       </li>
     </ul>
@@ -26,23 +26,70 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import * as meal from 'api/order';
+  import * as dateUtils from 'utils/date';
+
   export default {
     data() {
       return {
-        isShow: false
+        isShow: false,
+        isRotate:false,
+        orderList:[]
       };
     },
+    created(){
+      this._bindData()
+
+    },
+    activated(){
+      this.$parent.hasFooter=false
+      this._bindData()
+      document.body.scrollTop = 0;
+    },
     methods: {
-          toggle: function() {
-            this.isShow = !this.isShow;
-          }
+      toggle: function(item) {
+        item.isShow = !item.isShow
+        item.isRotate = !item.isRotate
+      },
+      _bindData() {
+        var _self = this
+        this.$indicator.open('加载中...')
+        meal.getAppointmentList().then(res=>{
+          this.$indicator.close()
+          res.data.DATA.forEach((order)=>{
+            order.isShow = false
+            order.isRotate = false
+          })
+          res.data.DATA.sort((a1, a2)=>{
+            if(!a1.APPOINT_DATE) a1.APPOINT_DATE = 0
+            if(!a2.APPOINT_DATE) a2.APPOINT_DATE = 0
+            return a2.APPOINT_DATE - a1.APPOINT_DATE
+          })
+          this.orderList = res.data.DATA
+
+        console.log(this.orderList)
+        }).catch(err=>{
+          this.$networkerr(err)
+        })
+      }
+    },
+    filters: {
+      DateValue(time) {
+        if(!time) {
+          return ""
         }
+        time = parseInt(time)
+        var date = new Date(time);
+        return dateUtils.formatDate(date, "yyyy-MM-dd hh:mm");
+      },
+    }
   };
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
   @import "../../common/stylus/mixin.styl"
   .my-order-list
+    margin-bottom: 20px
     .title
       margin: 20px 0 20px 15px
       .product-brand
@@ -61,6 +108,7 @@
     .itemwarp
       padding: 0 15px 25px 15px
       .item-boxshadow
+        margin-bottom: 25px
         background: #fff
         border-radius: 10px
         box-shadow: 0 0 8px rgba(94,170,248,0.4)
@@ -97,6 +145,25 @@
               background-size: cover
               background-repeat: no-repeat
               extend-click()
+              transform: rotate(0deg);
+              -webkit-transition: transform .25s linear;
+              -moz-transition: transform .25s linear;
+              -o-transition: transform .25s linear;
+              transition: transform .25s linear;
+            .toggle-btn-down
+              display: inline-block
+              float: right
+              width: 14px
+              height: 14px
+              bg-image('open')
+              background-size: cover
+              background-repeat: no-repeat
+              extend-click()
+              transform: rotate(180deg);
+              -webkit-transition: transform .25s linear;
+              -moz-transition: transform .25s linear;
+              -o-transition: transform .25s linear;
+              transition: transform .25s linear;
         .showtext
           position: relative
           display: flex
