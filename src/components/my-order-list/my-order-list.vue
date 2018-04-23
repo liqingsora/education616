@@ -13,7 +13,7 @@
           </div>
           <div class="yuyue-title">预约服务时间 ：
             <span class="server-time">{{item.APPOINT_DATE | DateValue}}</span>
-            <a type="button" @click="toggle(item)"><span :class="item.isRotate?'toggle-btn-down':'toggle-btn'"></span></a>
+            <a type="button" @click="toggle(item)" class="ip5"><span :class="item.isRotate?'toggle-btn-down':'toggle-btn'"></span></a>
           </div>
         </div>
         <div class="showtext" v-show="item.isShow">
@@ -136,34 +136,38 @@
               vertical-align: middle
             .server-time
               color: rgb(77,167,250)
-            .toggle-btn
-              display: inline-block
-              float: right
-              width: 14px
-              height: 14px
-              bg-image('open')
-              background-size: cover
-              background-repeat: no-repeat
-              extend-click()
-              transform: rotate(0deg);
-              -webkit-transition: transform .25s linear;
-              -moz-transition: transform .25s linear;
-              -o-transition: transform .25s linear;
-              transition: transform .25s linear;
-            .toggle-btn-down
-              display: inline-block
-              float: right
-              width: 14px
-              height: 14px
-              bg-image('open')
-              background-size: cover
-              background-repeat: no-repeat
-              extend-click()
-              transform: rotate(180deg);
-              -webkit-transition: transform .25s linear;
-              -moz-transition: transform .25s linear;
-              -o-transition: transform .25s linear;
-              transition: transform .25s linear;
+            .ip5
+              position: absolute;
+              padding-top: 2px;
+              right: 10px;
+              .toggle-btn
+                display: inline-block
+                float: right
+                width: 14px
+                height: 14px
+                bg-image('open')
+                background-size: cover
+                background-repeat: no-repeat
+                extend-click()
+                transform: rotate(0deg);
+                -webkit-transition: transform .25s linear;
+                -moz-transition: transform .25s linear;
+                -o-transition: transform .25s linear;
+                transition: transform .25s linear;
+              .toggle-btn-down
+                display: inline-block
+                float: right
+                width: 14px
+                height: 14px
+                bg-image('open')
+                background-size: cover
+                background-repeat: no-repeat
+                extend-click()
+                transform: rotate(180deg);
+                -webkit-transition: transform .25s linear;
+                -moz-transition: transform .25s linear;
+                -o-transition: transform .25s linear;
+                transition: transform .25s linear;
         .showtext
           position: relative
           display: flex
