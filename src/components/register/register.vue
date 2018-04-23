@@ -40,6 +40,7 @@
     created() {
 //      this.alertName()
       this.saveWXInfo()
+      document.title = "职击校园"
     },
     filters: {
       timeOutValue(val) {
@@ -154,7 +155,11 @@
 <style scoped lang="stylus" rel="stylesheet/stylus">
   @import "../../common/stylus/mixin.styl"
   .register
-    background: #fff
+    position: fixed
+    width: 100%
+    height: 100%
+    top: 0px
+    background-color: #ffffff
     .title
       margin: 60px 0 40px 0
       text-align: center
@@ -197,15 +202,20 @@
         line-height: 16px
         border-radius: 0
         border-bottom:1px solid rgb(238,238,238)
+        & input
+          width: 65%
         .vcode
           display: inline-block
           float: right
+          position: absolute
+          right: 30px
           border: none
           padding: 0
           font-size: 16px
-          line-height: 16px
+          line-height: 17.5px
           vertical-align: middle
-          color: rgb(67,67,67)
+          background: #fff
+          color: rgb(3,110,219)
       .register-button
         display: block
         border-radius: 10px

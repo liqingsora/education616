@@ -42,6 +42,7 @@
     },
     created() {
       this._bindData()
+      document.title = "职击校园"
     },
 
     methods: {

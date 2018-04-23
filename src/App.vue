@@ -2,12 +2,10 @@
   <div id="app">
     <m-footer v-show="hasFooter"></m-footer>
     <transition :name="direction" mode="out-in">
-
-    <keep-alive>
+      <keep-alive>
         <router-view v-if="isRouterAlive"></router-view>
-    </keep-alive>
+      </keep-alive>
     </transition>
-
   </div>
 </template>
 

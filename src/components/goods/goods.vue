@@ -33,6 +33,7 @@
     created() {
       this._bindData()
       this._saveName()
+      document.title = "职击校园"
     },
     activated(){
       this._bindData()
@@ -156,6 +157,7 @@
           background-repeat: no-repeat
           background-position: 0px 0px
           background-size: 100% 100%
+          margin-bottom: 25px
           bg-image('goodsbg')
           .text
             position: relative

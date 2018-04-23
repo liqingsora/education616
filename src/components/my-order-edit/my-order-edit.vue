@@ -11,7 +11,6 @@
           <span class="text" @click="openPicker">预约时间</span>
           <span class="server-time" @click="openPicker">
             {{Number(time) | DateValue}}
-
           </span>
         </div>
       </div>
@@ -53,6 +52,9 @@
         remark:''
       };
     },
+    created(){
+      document.title = "职击校园"
+    },
     activated(){
       this.$parent.hasFooter=false
       this._bindData()
@@ -84,9 +86,6 @@
             }
           })
       }
-    },
-    filters: {
-
     }
   };
 </script>

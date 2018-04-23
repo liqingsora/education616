@@ -28,12 +28,12 @@
     },
     created() {
       this._bindData()
+      document.title = "职击校园"
     },
     activated(){
       this.$parent.hasFooter=false
       document.body.scrollTop = 0
       this._bindData()
-
     },
     methods: {
       _bindData() {

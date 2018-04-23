@@ -12,6 +12,9 @@
 
 <script type="text/ecmascript-6">
   export default {
+    created() {
+      document.title = "职击校园"
+    },
     activated(){
       this.$parent.hasFooter=false
 //      console.log(this.$parent.hasFooter)

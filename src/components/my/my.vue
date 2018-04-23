@@ -63,6 +63,9 @@
         name:''
       }
     },
+    created() {
+      document.title = "职击校园"
+    },
     activated(){
       try {
         this.$indicator.close()

@@ -66,6 +66,7 @@
     },
     created() {
       this._bindData()
+      document.title = "职击校园"
     },
     activated(){
       this.$parent.hasFooter=false
@@ -147,8 +148,13 @@
           & input
             color: rgb(15,127,246)
             font-size: 15px
+            padding: 0
             text-align: right
             float: right
+            position: absolute
+            right: 20px
+            width: 60%
+            margin-top: -1.5px
           .w2
             letter-spacing: 2em
             margin-right: -2em
