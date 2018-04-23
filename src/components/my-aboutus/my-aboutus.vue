@@ -1,6 +1,7 @@
 <template>
   <div class="my-aboutus">
     <div class="my-aboutus-wrap">
+      <span class="brand"></span>
       <div class="title">关于我们</div>
       <div class="content">
         每次遇到中文排版页面时，需要每个段落开头缩进两格。之前傻乎乎的，用程序检测标签来进行中文段落开头的空两格缩进，还在骂HTML怎么就不能像WORD一样，自动识别中文编排格式。直到今天和公司美工在做项目时，才从他那里得知，原来自己是坐在井底看天了，CSS的一个属性就可以搞定所有的段落
@@ -26,11 +27,20 @@
     margin: 25px 7px
     .my-aboutus-wrap
       margin: 0 15px 70px 15px
+      padding-top: 10px
       background: #fff
       border-radius: 10px
       box-shadow: 0 0 8px rgba(94,170,248,0.4)
       text-align: center
       min-height: 500px
+      .brand
+        display: block
+        margin: 0 auto
+        width: 80px
+        height: 80px
+        bg-image('brand')
+        background-size: cover
+        background-repeat: no-repeat
       .title
         display: inline-block
         margin: 20px auto

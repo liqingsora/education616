@@ -4,17 +4,19 @@
       <span class="product-brand"></span>
       <span class="list-title">套餐列表</span>
     </div>
-    <ul class="itemwarp">
-      <li class="itembg" v-for="item in goods" :key="item.ID" @click="toPurchased(item.ID)">
-        <div class="text">
-          <h2 class="goods-name">{{item.NAME}}</h2>
-          <p class="goods-price">￥{{item.PRICE | MoneyFilter}}</p>
-          <ul class="goods-content">
-            <li v-for="item2 in item.allService" :key="item2.SERVICE_ID">{{item2.SERVICE_NAME}}<span>{{item2.COUNT}}</span>次</li>
-          </ul>
-        </div>
-      </li>
-    </ul>
+    <div class="ss">
+      <ul class="itemwarp">
+        <li class="itembg" v-for="item in goods" :key="item.ID" @click="toPurchased(item.ID)">
+          <div class="text">
+            <h2 class="goods-name">{{item.NAME}}</h2>
+            <p class="goods-price">￥{{item.PRICE | MoneyFilter}}</p>
+            <ul class="goods-content">
+              <li v-for="item2 in item.allService" :key="item2.SERVICE_ID">{{item2.SERVICE_NAME}}<span>{{item2.COUNT}}</span>次</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -133,65 +135,65 @@
       .product-brand
         display: inline-block
         vertical-align: middle
-        width: 60px
+        width: 12px
         height: 17px
-        bg-image('pbrand')
-        background-size: 60px 17px
+        bg-image('row')
+        background-size: 12px 17px
         background-repeat: no-repeat
       .list-title
         vertical-align: middle
         margin-left: 10px
         font-size: 17px
         color: rgb(50,50,50)
-    .itemwarp
+    .ss
       padding: 0 25px 25px 25px
-      .itembg
-        display: flex
-        box-sizing: border-box
-        align-items: center
-        margin-bottom: 20px
-        width: 100%
-        height: 100%
-        bg-image('goodsbg')
-        background-size: 99%
-        background-repeat: no-repeat
-        .text
-          position: relative
-          display: flex
-          flex-direction: column
-          justify-content: center
-          flex: 1
-          line-height: 20px
-          overflow: hidden
-          .goods-name
-            margin: 32px 0 0 24px
-            font-size: 26px
-            line-height: 26px
-            color: #fff
-            width: 55%
-            text-overflow: ellipsis
+      .itemwarp
+        .itembg
+          width: 100%
+          height: 100%
+          position: block
+          z-index: -10
+          background-repeat: no-repeat
+          background-position: 0px 0px
+          background-size: 100% 100%
+          bg-image('goodsbg')
+          .text
+            position: relative
+            display: block
+            flex-direction: column
+            justify-content: center
+            flex: 1
+            line-height: 20px
             overflow: hidden
-            white-space: nowrap
-          .goods-price
-            margin: 19px 0 45px 24px
-            font-size: 20px
-            font-weight: bold
-            color: rgb(242,201,106)
-            width: 40%
-            text-overflow: ellipsis
-            overflow: hidden
-            white-space: nowrap
-          .goods-content
-            position: absolute
-            bottom: 15px
-            right: 28px
-            color: #fff
-            letter-spacing: 1px;
-            & li
-              list-style-type: disc
-              font-size: 12px
-              line-height: 16px
-              & span
-                font-size: 16px
-                font-weight: bold
+            .goods-name
+              margin: 35px 0 0 24px
+              font-size: 26px
+              line-height: 26px
+              color: #fff
+              width: 55%
+              text-overflow: ellipsis
+              overflow: hidden
+              white-space: nowrap
+            .goods-price
+              margin: 19px 0 42px 24px
+              font-size: 20px
+              font-weight: bold
+              color: rgb(242,201,106)
+              width: 40%
+              text-overflow: ellipsis
+              overflow: hidden
+              white-space: nowrap
+            .goods-content
+              position: absolute
+              bottom: 15px
+              right: 25px
+              color: #fff
+              letter-spacing: 1px;
+              & li
+                list-style-type: disc
+                font-size: 12px
+                line-height: 16px
+                & span
+                  font-size: 16px
+                  font-weight: bold
 </style>

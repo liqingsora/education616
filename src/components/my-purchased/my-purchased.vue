@@ -4,23 +4,27 @@
       <span class="product-brand"></span>
       <span class="list-title">套餐列表</span>
     </div>
-    <ul class="itemwarp">
-      <li v-for="(item,index) in orders" :key="index" :class="parseInt(item.ORDER_STATUS)?'itembg-over':'itembg'">
-        <div class="text-left">
-          <p class="mygoods-name border-1px">
-            <span class="name">{{item.SET_NAME}}</span>
-            <span class="time">{{item.CREATE_DATE|DateValue}}</span>
-          </p>
-          <p class="mygoods-num border-1px">订单号：<span>{{item.ORDER_NUM}}</span></p>
-          <div class="mygoods-content">
-            <p v-for="(item2, index) in item.allService" :key="index">{{item2.SERVICE_NAME}} ：<span>{{item2.COUNT}}次</span></p>
+    <div class="ss">
+      <ul class="itemwarp">
+        <li v-for="(item,index) in orders" :key="index" :class="parseInt(item.ORDER_STATUS)?'itembg-over':'itembg'">
+          <div class="text">
+            <div class="text-left">
+              <p class="mygoods-name border-1px">
+                <span class="name">{{item.SET_NAME}}</span>
+                <span class="time">{{item.CREATE_DATE|DateValue}}</span>
+              </p>
+              <p class="mygoods-num border-1px">订单号：<span>{{item.ORDER_NUM}}</span></p>
+              <div class="mygoods-content">
+                <p v-for="(item2, index) in item.allService" :key="index">{{item2.SERVICE_NAME}} ：<span>{{item2.COUNT}}次</span></p>
+              </div>
+            </div>
+            <div class="text-right">
+              <span class="mygoods-state">{{item.ORDER_STATUS_CN}}</span>
+            </div>
           </div>
-        </div>
-        <div class="text-right">
-          <span class="mygoods-state">{{item.ORDER_STATUS_CN}}</span>
-        </div>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -96,144 +100,169 @@
       .product-brand
         display: inline-block
         vertical-align: middle
-        width: 60px
+        width: 12px
         height: 17px
-        bg-image('pbrand')
-        background-size: 60px 17px
+        bg-image('row')
+        background-size: 12px 17px
         background-repeat: no-repeat
       .list-title
         vertical-align: middle
         margin-left: 10px
         font-size: 17px
         color: rgb(50,50,50)
-    .itemwarp
+    .ss
       padding: 0 30px 25px 30px
-      .itembg
-        display: flex
-        box-sizing: border-box
-        align-items: center
-        margin-bottom: 17px
-        width: 100%
-        height: 100%
-        bg-image('purchase')
-        background-size: 100%
-        background-repeat:no-repeat
-        .text-left
-          width: 90%
-          display: inline-block
-          float: left
-          .mygoods-name
-            width: 90%
-            display: inline-block
-            vertical-align: baseline
-            padding: 13px 15px
-            font-size: 15px
-            font-weight: bold
-            border-1px(rgb(238,238,238),0,15px,0,15px,80%)
-            .name
-              width: 46%
-              float: left
-              color: rgb(50,50,50)
-              text-overflow: ellipsis
-              overflow: hidden
-              white-space: nowrap
-            .time
-              float: right
-              display: inline-block
-              vertical-align: baseline
-              font-size: 15px
-              color: rgb(200,200,200)
-          .mygoods-num
-            padding: 13px 15px
-            font-size: 14px
-            color: rgb(52,52,52)
-            & span
-              color: rgb(17,110,245)
-            border-1px(rgb(238,238,238),0,15px,0,15px,80%)
-          .mygoods-content
-            padding: 11.8px 15px
-            height: 48px
-            color: rgb(101,101,101)
-            & p
-              width: 50%
+      .itemwarp
+        .itembg
+          width: 100%
+          height: 100%
+          position: block
+          z-index: -10
+          background-repeat: no-repeat
+          background-position: 0px 0px
+          background-size: 100% 100%
+          bg-image('purchase')
+          margin-bottom: 25px
+          .text
+            position: relative
+            display: block
+            flex-direction: column
+            justify-content: center
+            flex: 1
+            line-height: 20px
+            overflow: hidden
+            .text-left
+              width: 90%
               display: inline-block
               float: left
-              font-size: 13px
-              line-height: 22px
-              & span
-                color: rgb(13,114,253)
-        .text-right
-          width: 10%
-          display: inline-block
-          float: left
-          .mygoods-state
-            writing-mode: tb-lr
-            writing-mode: vertical-lr
-            font-size:14px
-            padding-left: 5px
-            color: rgb(101,101,101)
-      .itembg-over
-        display: flex
-        box-sizing: border-box
-        align-items: center
-        margin-bottom: 17px
-        width: 100%
-        height: 100%
-        bg-image('purchase-active')
-        background-size: 100%
-        background-repeat:no-repeat
-        .text-left
-          width: 90%
-          display: inline-block
-          float: left
-          .mygoods-name
-            width: 90%
-            display: inline-block
-            vertical-align: baseline
-            padding: 13px 15px
-            font-size: 15px
-            font-weight: bold
-            border-1px(rgb(238,238,238),0,15px,0,15px,80%)
-            .name
-              width: 46%
-              float: left
-              color: rgb(50,50,50)
-              text-overflow: ellipsis
-              overflow: hidden
-              white-space: nowrap
-            .time
-              float: right
-              display: inline-block
-              vertical-align: baseline
-              font-size: 15px
-              color: rgb(200,200,200)
-          .mygoods-num
-            padding: 13px 15px
-            font-size: 14px
-            color: rgb(52,52,52)
-            & span
-              color: rgb(17,110,245)
-            border-1px(rgb(238,238,238),0,15px,0,15px,80%)
-          .mygoods-content
-            padding: 11.8px 15px
-            height: 48px
-            color: rgb(101,101,101)
-            & p
-              width: 50%
+              .mygoods-name
+                width: 90%
+                display: inline-block
+                vertical-align: baseline
+                padding: 13px 15px
+                font-size: 15px
+                font-weight: bold
+                border-1px(rgb(238,238,238),0,15px,0,15px,80%)
+                .name
+                  width: 35%
+                  float: left
+                  color: rgb(50,50,50)
+                  text-overflow: ellipsis
+                  overflow: hidden
+                  white-space: nowrap
+                .time
+                  float: right
+                  display: inline-block
+                  vertical-align: baseline
+                  font-size: 15px
+                  color: rgb(200,200,200)
+              .mygoods-num
+                padding: 13px 15px
+                font-size: 14px
+                color: rgb(52,52,52)
+                & span
+                  color: rgb(17,110,245)
+                border-1px(rgb(238,238,238),0,15px,0,15px,80%)
+              .mygoods-content
+                padding: 11.8px 15px
+                height: 48px
+                color: rgb(101,101,101)
+                & p
+                  width: 50%
+                  display: inline-block
+                  float: left
+                  font-size: 13px
+                  line-height: 22px
+                  & span
+                    color: rgb(13,114,253)
+            .text-right
+              width: 10%
               display: inline-block
               float: left
-              font-size: 13px
-              line-height: 22px
-              & span
-                color: rgb(13,114,253)
-        .text-right
-          width: 10%
-          display: inline-block
-          float: left
-          .mygoods-state
-            writing-mode: tb-lr
-            writing-mode: vertical-lr
-            font-size:14px
-            padding-left: 5px
-            color: rgb(17,110,245)
+              margin-left: -1px
+              text-align: center
+              .mygoods-state
+                writing-mode: tb-lr
+                writing-mode: vertical-lr
+                font-size: 16px
+                letter-spacing: 6px
+                line-height: 16px
+                padding-top: 54px
+                color: rgb(101,101,101)
+        .itembg-over
+          width: 100%
+          height: 100%
+          position: block
+          z-index: -10
+          background-repeat: no-repeat
+          background-position: 0px 0px
+          background-size: 100% 100%
+          bg-image('purchase-active')
+          margin-bottom: 25px
+          .text
+            position: relative
+            display: block
+            flex-direction: column
+            justify-content: center
+            flex: 1
+            line-height: 20px
+            overflow: hidden
+            .text-left
+              width: 90%
+              display: inline-block
+              float: left
+              .mygoods-name
+                width: 90%
+                display: inline-block
+                vertical-align: baseline
+                padding: 13px 15px
+                font-size: 15px
+                font-weight: bold
+                border-1px(rgb(238,238,238),0,15px,0,15px,80%)
+                .name
+                  width: 35%
+                  float: left
+                  color: rgb(50,50,50)
+                  text-overflow: ellipsis
+                  overflow: hidden
+                  white-space: nowrap
+                .time
+                  float: right
+                  display: inline-block
+                  vertical-align: baseline
+                  font-size: 15px
+                  color: rgb(200,200,200)
+              .mygoods-num
+                padding: 13px 15px
+                font-size: 14px
+                color: rgb(52,52,52)
+                & span
+                  color: rgb(17,110,245)
+                border-1px(rgb(238,238,238),0,15px,0,15px,80%)
+              .mygoods-content
+                padding: 11.8px 15px
+                height: 48px
+                color: rgb(101,101,101)
+                & p
+                  width: 50%
+                  display: inline-block
+                  float: left
+                  font-size: 13px
+                  line-height: 22px
+                  & span
+                    color: rgb(13,114,253)
+            .text-right
+              width: 10%
+              display: inline-block
+              float: left
+              text-align: center
+              margin-left: -1px
+              .mygoods-state
+                writing-mode: tb-lr
+                writing-mode: vertical-lr
+                font-size: 16px
+                letter-spacing: 6px
+                line-height: 16px
+                padding-top: 54px
+                color: rgb(17,110,245)
 </style>

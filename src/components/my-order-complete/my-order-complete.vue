@@ -62,10 +62,10 @@
       .product-brand
         display: inline-block
         vertical-align: middle
-        width: 60px
+        width: 12px
         height: 17px
-        bg-image('pbrand')
-        background-size: 60px 17px
+        bg-image('row')
+        background-size: 12px 17px
         background-repeat: no-repeat
       .list-title
         vertical-align: middle
