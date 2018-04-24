@@ -149,8 +149,8 @@
             color: #666
           .server-button
             display: inline-block
-            float: left
-            margin: 28px 0 28px 70px
+            float: right
+            margin: 28px 30px 28px 0
             font-size: 15px
             color: #666
             .gobtn
