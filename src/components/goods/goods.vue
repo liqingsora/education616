@@ -11,7 +11,7 @@
             <h2 class="goods-name">{{item.NAME}}</h2>
             <p class="goods-price">￥{{item.PRICE | MoneyFilter}}</p>
             <ul class="goods-content">
-              <li v-for="item2 in item.allService" :key="item2.SERVICE_ID">{{item2.SERVICE_NAME}}<span>{{item2.COUNT}}</span>次</li>
+              <li v-for="item2 in item.allService" :key="item2.SERVICE_ID" v-if="item2.COUNT == '' || item2.COUNT == 0 ? false : true">{{item2.SERVICE_NAME}}<span>{{item2.COUNT}}</span>次</li>
             </ul>
           </div>
         </li>
@@ -117,7 +117,6 @@
         })
           .catch(err=>{
             _self.$networkerr(err, _self)
-
           });
       }
     },
