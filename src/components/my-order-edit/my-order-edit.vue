@@ -79,7 +79,7 @@
           .then(res=>{
             if(res.data.RETURN_CODE == '00') {
               this.$toast({
-                message: '提交成功.'
+                message: '提交成功'
               });
               this.$router.push('my-order-list')
 

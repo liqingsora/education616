@@ -95,7 +95,7 @@
 
             if(res.data.RETURN_CODE == '00') {
               this.$toast({
-                message: '提交成功.'
+                message: '提交成功'
               });
               store.setStore('USER_NAME', this.myInfo.NAME)
               this.$router.push('goods')

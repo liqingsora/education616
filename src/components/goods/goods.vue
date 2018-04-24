@@ -79,7 +79,7 @@
             this.$indicator.close()
             if(res.data.RETURN_CODE == '00') {
               this.$toast({
-                message: '提示: 请联系老师咨询详情.',
+                message: '提示: 请联系老师咨询详情',
                 duration: 8000
               });
               this.$router.push('my-purchased')

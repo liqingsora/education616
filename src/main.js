@@ -10,7 +10,13 @@ import 'mint-ui/lib/style.css';
 import * as dateUtils from 'utils/date';
 import * as store from 'utils/store'
 import VeeValidate , {Validator} from 'vee-validate';
-import zh from 'vee-validate/dist/locale/zh_CN'
+import zh from 'vee-validate/dist/locale/zh_CN';
+import wx from 'weixin-js-sdk';
+import VueClipboard from 'vue-clipboard2';
+
+Vue.use(VueClipboard);
+
+
 // 配置中文
 Validator.extend('phone', {
   getMessage: field => '请输入11位手机号码',
@@ -83,8 +89,9 @@ fastclick.attach(document.body);// 防止手机端300毫秒延迟
 // })
 
 /* eslint-disable no-new */
-new Vue({
+var homevue = new Vue({
   el: '#app',
   router: router,
   render: h => h(App)
 });
+

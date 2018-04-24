@@ -59,7 +59,7 @@
           this.$router.push(`my-order-edit?id=${id}&name=${name}`)
         } else {
           this.$toast({
-            message: '请联系老师购买次数.',
+            message: '请联系老师购买次数',
           });
         }
       }

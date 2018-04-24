@@ -13,7 +13,7 @@
                 <span class="name">{{item.SET_NAME}}</span>
                 <span class="time">{{item.CREATE_DATE|DateValue}}</span>
               </p>
-              <p class="mygoods-num border-1px">订单号：<span>{{item.ORDER_NUM}}</span></p>
+              <p class="mygoods-num border-1px">订单号：<span>{{item.ORDER_NUM}}</span><button type="button" v-clipboard:copy="item.ORDER_NUM" v-clipboard:success="onCopy">复制</button></p>
               <div class="mygoods-content">
                 <p v-for="(item2, index) in item.allService" :key="index">{{item2.SERVICE_NAME}} ：<span>{{item2.COUNT}}次</span></p>
               </div>
@@ -46,6 +46,12 @@
     },
 
     methods: {
+      onCopy: function (e) {
+        this.$toast({
+          message: '已复制订单号',
+          duration: 3000
+        });
+      },
       _bindData(){
         var _self = this
         _self.$indicator.open('加载中...')
@@ -163,6 +169,11 @@
                 color: rgb(52,52,52)
                 & span
                   color: rgb(17,110,245)
+                & button
+                  margin-left: 20px
+                  background: #fff
+                  border: 1px solid rgb(17,110,245)
+                  color: rgb(17,110,245)
                 border-1px(rgb(238,238,238),0,15px,0,15px,80%)
               .mygoods-content
                 padding: 11.8px 15px
@@ -238,6 +249,11 @@
                 font-size: 14px
                 color: rgb(52,52,52)
                 & span
+                  color: rgb(17,110,245)
+                & button
+                  margin-left: 20px
+                  background: #fff
+                  border: 1px solid rgb(17,110,245)
                   color: rgb(17,110,245)
                 border-1px(rgb(238,238,238),0,15px,0,15px,80%)
               .mygoods-content

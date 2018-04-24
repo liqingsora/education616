@@ -12,7 +12,9 @@
 <script type="text/ecmascript-6">
   import MFooter from 'components/m-footer/m-footer'
   import * as store from 'utils/store'
-
+  import wx from 'weixin-js-sdk'
+  import urlgetter from 'utils/url'
+  import * as meal from 'api/order';
   export default {
     data () {
       return {
@@ -33,6 +35,43 @@
         console.log(this.direction)
       }
     },
+    created() {
+      var mice = urlgetter('mice')
+      mice = JSON.parse(mice)
+      console.log(wx)
+      // wx.config({
+      //   debug: true,
+      //   appId: mice.appid,
+      //   timestamp: mice.timestamp,
+      //   nonceStr: mice.noncestr,
+      //   signature: mice.signature,
+      //   jsApiList : [ 'checkJsApi', 'scanQRCode', 'hideMenuItems' ]
+      // });
+      var url = location.href
+      console.log(url)
+      meal.getSignature({'url':url}).then(res=>{
+        console.log(res)
+        var mice = res.data.DATA
+        wx.config({
+          debug: false,
+          appId: mice.appid,
+          timestamp: mice.timestamp,
+          nonceStr: mice.noncestr,
+          signature: mice.signature,
+          jsApiList : [ 'checkJsApi', 'scanQRCode', 'hideMenuItems', 'hideAllNonBaseMenuItem' ]
+        });
+        wx.ready(()=>{
+          wx.hideAllNonBaseMenuItem()
+        });
+
+        wx.error(function(res){
+          console.log('wx err',res);
+        })
+
+          //可以更新签名
+      });
+    },
+
     methods: {
       reload () {
         console.log('is reloading')

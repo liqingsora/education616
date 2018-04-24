@@ -77,7 +77,7 @@
       confirmCode(){
         if(!this.yzm) {
           this.$toast({
-            message: '提示: 请输入验证码.',
+            message: '请输入验证码',
             duration: 5000
           });
           return
@@ -93,7 +93,7 @@
 
           if(res.data.RETURN_CODE == '00') {
             this.$toast({
-              message: '提示: 注册成功, 请您完善信息.',
+              message: '注册成功, 请您完善信息',
               duration: 5000
             });
             this.$router.push('my-edit')
@@ -112,7 +112,7 @@
         if(!this.yzmEnable) return
 //        if(!this.phone) {
 //          this.$toast({
-//            message: '提示: 请输入手机号.',
+//            message: '请输入手机号',
 //            duration: 5000
 //          });
 //          return
@@ -136,7 +136,7 @@
               });
             } else {
               this.$toast({
-                message: '提示: 发送成功!',
+                message: '发送成功',
                 duration: 5000
               });
               this._timeCount()

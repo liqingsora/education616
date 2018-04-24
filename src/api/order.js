@@ -20,6 +20,7 @@ import * as store from 'utils/store'
 
   }
 
+  const getSignature = (param) => instance.post(`getConfig` ,qs.stringify(param));
   const mealList = () => instance.post(`jqyrapi?ACTION_NAME=getSetMealList`);
   const orderList = () => instance.post(`jqyrapi?ACTION_NAME=getOrderList&USER_ID=${getUserId()}`);
   const saveOrder = (param) => instance.post(`jqyrapi?ACTION_NAME=saveOrder`, strParam(param));
@@ -43,5 +44,6 @@ export {
   getServiceList,
   getServiceLog,
   saveAppointment,
-  getAppointmentList
+  getAppointmentList,
+  getSignature
 };
